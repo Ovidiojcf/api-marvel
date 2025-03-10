@@ -26,5 +26,23 @@ export async function getCharacters () {
     throw error;
   }
 }
+export async function getComics() {
+  try{
+    const response = await api.get(`/comics?${getAuthParams()}`);
+    return response.data;
+  }catch(error){
+    console.log('Failed to fetch comics');
+    throw error;
+  }
+}
+export async function getCharactersById(characterId){
+  try{
+    const response = await api.get(`/characters/{characterId}?${getAuthParams()}`);
+    return response.data;
+  }catch(error){
+    console.log('Failed to fetch character: ',characterId);
+    throw error;
+  }
+}
 
 export default api;

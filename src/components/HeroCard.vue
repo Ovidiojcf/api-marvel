@@ -6,7 +6,7 @@
     type: Object,
     required: true,  // Garantir que o prop será sempre passado
   }
-});;
+});
 
 </script>
 
