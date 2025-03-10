@@ -4,7 +4,6 @@ import { RouterView } from 'vue-router'
 
 <template>
   <header>
-    <h1>Marvel Api</h1>
   </header>
   <RouterView />
 </template>

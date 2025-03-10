@@ -4,6 +4,8 @@ import { getCharacters, getComics, getSeries } from '@/services/marvelApi';
 import HeroCard from '@/components/HeroCard.vue';
 import ComicsCard from '@/components/ComicsCard.vue';
 import SeriesCard from '@/components/SeriesCard.vue';
+import Hero from '@/components/HeroComponent.vue';
+
 
 const heroes = ref([]);
 const comics = ref([]);
@@ -22,6 +24,9 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div>
+    <Hero/>
+  </div>
   <div>
     <h1>Personagens da Marvel</h1>
     <div>
