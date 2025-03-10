@@ -17,9 +17,9 @@ const api = axios.create({
   timeout: 5000,
 });
 
-export async function getCharacters () {
+export async function getCharacters (limit = 20, offset = 0) {
   try{
-    const response = await api.get(`/characters?${getAuthParams()}`);
+    const response = await api.get(`/characters?limit=${limit}&offset=${offset}&${getAuthParams()}`);
     return response.data;
   }catch(error){
     console.log('Failed to fetch characters');
@@ -32,6 +32,15 @@ export async function getComics() {
     return response.data;
   }catch(error){
     console.log('Failed to fetch comics');
+    throw error;
+  }
+}
+export async function getSeries() {
+  try {
+    const response = await api.get(`/series?${getAuthParams()}`);
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch series');
     throw error;
   }
 }
