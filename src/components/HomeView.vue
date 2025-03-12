@@ -5,7 +5,7 @@ import HeroCard from '@/components/HeroCard.vue';
 import ComicsCard from '@/components/ComicsCard.vue';
 import SeriesCard from '@/components/SeriesCard.vue';
 import Hero from '@/components/HeroComponent.vue';
-
+import NavBar from '@/components/NavBar.vue';
 
 const heroes = ref([]);
 const comics = ref([]);
@@ -24,10 +24,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
+    <NavBar/>
+  <div class="relative">
     <Hero/>
   </div>
-  <div>
+  <div class="relative">
     <h1>Personagens da Marvel</h1>
     <div>
       <h1>Lista de Heróis</h1>
