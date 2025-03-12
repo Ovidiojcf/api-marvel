@@ -1,0 +1,5 @@
+<template>
+  <Footer>
+
+  </Footer>
+</template>
