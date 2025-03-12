@@ -6,6 +6,7 @@ import ComicsCard from '@/components/ComicsCard.vue';
 import SeriesCard from '@/components/SeriesCard.vue';
 import Hero from '@/components/HeroComponent.vue';
 import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/FooterComponent.vue';
 
 const heroes = ref([]);
 const comics = ref([]);
@@ -24,7 +25,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <NavBar/>
+  <NavBar/>
   <div class="relative">
     <Hero/>
   </div>
@@ -45,6 +46,7 @@ onMounted(async () => {
       <SeriesCard v-for="serie in series" :key="serie.id" :serie="serie"/>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <style scoped>
