@@ -1,7 +1,7 @@
 <script setup>
-  import { defineProps } from 'vue';
+import { defineProps } from 'vue';
 
-  const props = defineProps({
+const props = defineProps({
   hero: {
     type: Object,
     required: true,  // Garantir que o prop será sempre passado
@@ -13,21 +13,22 @@
 
 <template>
   <div v-if="hero && hero.thumbnail">
-    <!-- Grid Container -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <div class="flex flex-col items-center">
-        <h2 class="text-xl font-semibold mb-2">{{ props.hero.name }}</h2>
-        <img
-          :src="props.hero.thumbnail.path + '.' + props.hero.thumbnail.extension"
-          alt="Hero Image"
-          class="w-full h-auto rounded-lg shadow-lg"
-        />
+    <div class="">
+      <div class="mx-auto max-w-7xl px-8 py-10 lg: py-14">
+        <div class="mt-6">
+          <div class="rounded-lg">
+            <h2 class="text-white text-5x1 font-bold mb-2 py-2 sm:text-3xl">{{ props.hero.name }}</h2>
+          <img
+            :src="props.hero.thumbnail.path + '.' + props.hero.thumbnail.extension"
+            alt="Hero Image"
+            class="aspect-square w-full rounded-md bg-gray-200 object-cover my-8">
+            <p class="mt-1 py-4 text-base text-white">Description: {{ props.hero.description || "No description available."   }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div v-else>
-    <p class="text-center text-gray-500">Carregando herói...</p>
-  </div>
+
 </template>
 
 
@@ -39,6 +40,7 @@
   border-radius: 8px;
   text-align: center;
 }
+
 .card img {
   width: 100%;
   border-radius: 5px;

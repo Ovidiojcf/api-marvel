@@ -14,7 +14,7 @@ const getAuthParams = () => {
 
 const api = axios.create({
   baseURL,
-  timeout: 5000,
+  timeout: 15000,
 });
 
 export async function getCharacters (limit = 20, offset = 0) {
@@ -35,15 +35,32 @@ export async function getComics() {
     throw error;
   }
 }
-export async function getSeries() {
+export async function getSeries(limit =70, offset = 30) {
   try {
-    const response = await api.get(`/series?${getAuthParams()}`);
+    const response = await api.get(`/series?limit=${limit}&offset=${offset}&${getAuthParams()}`);
     return response.data;
   } catch (error) {
     console.log('Failed to fetch series');
     throw error;
   }
 }
+
+export async function getTopSeries() {
+  try {
+    const response = await api.get(`/series?limit=100&${getAuthParams()}`);
+    const seriesIds = [21112, 20606,21114,21115];
+    // 21112
+    // Filtra apenas as séries desejadas
+    const filteredSeries = response.data.data.results.filter(serie => seriesIds.includes(serie.id));
+
+    return filteredSeries;
+  } catch (error) {
+    console.log('Failed to fetch top series', error);
+    throw error;
+  }
+}
+
+
 export async function getCharactersById(characterId){
   try{
     const response = await api.get(`/characters/{characterId}?${getAuthParams()}`);
