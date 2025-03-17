@@ -14,6 +14,7 @@
         <div class="flex-1 flex ">
           <div class="flex space-x-8">
             <router-link to="/heroes"  class="rounded-md px-4 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Heroes</router-link>
+            <router-link to="/favorites"  class="rounded-md px-4 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Favorites Heroes</router-link>
             <a href="#" class="rounded-md px-4 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Comics</a>
             <a href="#" class="rounded-md px-4 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Series</a>
             <a href="#" class="rounded-md px-4 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>

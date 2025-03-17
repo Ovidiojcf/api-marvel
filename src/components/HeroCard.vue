@@ -1,12 +1,14 @@
 <script setup>
 import { defineProps } from 'vue';
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useHeroStore } from '@/stores/heroStore';
 import { HeartIcon } from '@heroicons/vue/24/solid';
 
-const isFavorite = ref(false); // necessário para utilizar somente na HeroList.vue o icone.
+const heroStore = useHeroStore();
+const { favorites } = storeToRefs(heroStore)
 
 const toggleFavorite = () => {
-  isFavorite.value = !isFavorite.value;
+  heroStore.toggleFavorite(props.hero);
 };
 
 const props = defineProps({
@@ -31,9 +33,10 @@ const props = defineProps({
           <h2 class="text-white text-5x1 font-bold mb-2 py-2 sm:text-3xl">{{ props.hero.name }}</h2>
           <img :src="props.hero.thumbnail.path + '.' + props.hero.thumbnail.extension" alt="Hero Image"
             class="aspect-square w-full rounded-md bg-gray-200 object-cover my-8">
-          <button v-if="showFavorite" @click="toggleFavorite"
+          <button v-if="showFavorite" @click="toggleFavorite(props.hero)"
             class="absolute top-2 right-2 p-2 rounded-full bg-black/50 hover:bg-black/80 transition">
-            <HeartIcon :class="isFavorite ? 'text-red-500' : 'text-gray-300'" class="w-6 h-6" />
+            <HeartIcon :class="favorites.some(fav => fav.id === hero.id) ? 'text-red-500' : 'text-gray-300'"
+              class="w-6 h-6" />
           </button>
           <p class="mt-1 py-4 text-base text-white">Description: {{ props.hero.description || "No description available." }}</p>
         </div>
