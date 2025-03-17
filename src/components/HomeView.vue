@@ -5,11 +5,10 @@ import {
   getComics,
   getSeries,
   getTopSeries,
-  getTotalCharacters
 } from '@/services/marvelApi';
 import HeroCard from '@/components/HeroCard.vue';
 // import ComicsCard from '@/components/ComicsCard.vue';
-// import SeriesCard from '@/components/SeriesCard.vue';
+import SeriesCard from '@/components/SeriesCard.vue';
 import Hero from '@/components/HeroComponent.vue';
 import BestSeriesComponent from '@/components/BestSeriesComponent.vue';
 import MoonComponent from '@/components/MoonComponent.vue';
@@ -19,7 +18,6 @@ const heroes = ref([]);
 const comics = ref([]);
 const series = ref([]);
 const seriesTopSellers = ref([]);
-const totalCharacters = ref(0);
 
 onMounted(async () => {
   const data = await getCharacters(4, 0);
@@ -27,10 +25,9 @@ onMounted(async () => {
   const comicsData = await getComics();
   comics.value = comicsData.data.results;
   const seriesData = await getSeries();
-  series.value = seriesData.data.results;
+  series.value = seriesData;
   const seriesTop = await getTopSeries();
   seriesTopSellers.value = seriesTop;
-  totalCharacters.value = await getTotalCharacters();
 });
 </script>
 
@@ -56,9 +53,14 @@ onMounted(async () => {
     <div class="p-10">
       <MoonComponent />
     </div>
-  </div>
-  <div class="text-center py-6">
-    <h2 class="text-4xl font-bold text-blue">Total de Heróis Disponíveis: {{ totalCharacters }}</h2>
+    <div class="bg-black mt-10 p-6">
+      <h3 class="py-4 text-center text-5xl md:text-7xl font-bold tracking-tight text-white">
+        Featured Series
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <SeriesCard v-for="serie in series" :key="serie.id" :serie="serie" class="group relative" />
+      </div>
+    </div>
   </div>
 </template>
 

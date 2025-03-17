@@ -16,8 +16,10 @@
               Marc Spector vive entre a escuridão e a redenção, equilibrando múltiplas identidades para lutar contra o crime. Assuma o manto do Cavaleiro da Lua e descubra o verdadeiro poder da noite.
             </p>
             <div class="mt-10 flex justify-start gap-x-6">
-              <a href="#"
-                class="rounded-md bg-yellow-400 px-3.5 py-2.5 text-xl font-semibold text-black shadow-xs hover:bg-yellow-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Find your Hero</a>
+              <router-link to="/heroes"
+                class="rounded-md bg-yellow-400 px-3.5 py-2.5 text-xl font-semibold text-black shadow-xs hover:bg-yellow-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Find your Hero
+              </router-link>
             </div>
           </div>
           <!-- Div da imagem -->
@@ -25,7 +27,7 @@
             <img src="/src/assets/imgs/cavaleirodalua.jpg" alt="Dashboard image" class="rounded-l-3xl object-cover w-full  lg:w-4/">
           </div>
         </div>
-      </div>ax-w
+      </div>
     </div>
   </section>
 </template>

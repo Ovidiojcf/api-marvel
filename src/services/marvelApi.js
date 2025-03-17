@@ -36,10 +36,10 @@ export async function getComics() {
     throw error;
   }
 }
-export async function getSeries(limit =70, offset = 30) {
+export async function getSeries(limit = 8, offset = 0) {
   try {
     const response = await api.get(`/series?limit=${limit}&offset=${offset}&${getAuthParams()}`);
-    return response.data;
+    return response.data.data.results;;
   } catch (error) {
     console.log('Failed to fetch series');
     throw error;

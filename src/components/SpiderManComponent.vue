@@ -9,7 +9,7 @@
               About that hero
             </div>
             <h1 class="py-8 text-white font-black font-manrope text-5xl">
-              Embrace the Web of Justice. <br/><span class="text-red-600">Become the Spider-Man.</span>
+              Embrace the Web of Justice. <br /><span class="text-red-600">Become the Spider-Man.</span>
             </h1>
             <p class="text-gray-500 text-2x1 pb-6 2zl:text-2x1">
               Peter Parker vive entre o equilíbrio de sua vida normal e a luta contra o crime. Com grandes poderes vêm
@@ -17,8 +17,10 @@
               próprios dilemas pessoais.
             </p>
             <div class="mt-10 flex justify-start gap-x-6">
-              <a href="#"
-                class="rounded-md bg-red-600 px-3.5 py-2.5 text-xl font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Find your Hero</a>
+              <router-link to="/heroes"
+                class="rounded-md bg-red-600 px-3.5 py-2.5 text-xl font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Find your Hero
+              </router-link>
             </div>
           </div>
           <!-- Div da imagem -->
