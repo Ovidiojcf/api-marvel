@@ -13,6 +13,8 @@ const heroStore = useHeroStore();
       <HeroCard v-for="hero in heroStore.favorites" :key="hero.id" :hero="hero" :showFavorite="true" />
     </div>
 
-    <p v-else class="text-white text-center text-lg">Nenhum herói favoritado ainda.</p>
+    <div v-else>
+      <p  class=" h-96 text-white text-center text-lg">Nenhum herói favoritado ainda.</p>
+    </div>
   </div>
 </template>

@@ -36,15 +36,27 @@ export async function getComics() {
     throw error;
   }
 }
-export async function getSeries(limit = 8, offset = 0) {
+// export async function getSeries(limit = 8, offset = 0) {
+//   try {
+//     const response = await api.get(`/series?limit=${limit}&offset=${offset}&${getAuthParams()}`);
+//     return response.data.data.results;;
+//   } catch (error) {
+//     console.log('Failed to fetch series');
+//     throw error;
+//   }
+// }
+export async function getSeries(limit = 8, offset = 0, startYear = 2020) {
   try {
-    const response = await api.get(`/series?limit=${limit}&offset=${offset}&${getAuthParams()}`);
-    return response.data.data.results;;
+    const response = await api.get(
+      `/series?limit=${limit}&offset=${offset}&startYear=${startYear}&${getAuthParams()}`
+    );
+    return response.data.data.results;
   } catch (error) {
     console.log('Failed to fetch series');
     throw error;
   }
 }
+
 
 export async function getTopSeries() {
   try {
