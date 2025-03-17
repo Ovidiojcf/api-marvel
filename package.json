@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "@tailwindcss/vite": "^4.0.12",
     "api-marvel": "file:",
     "axios": "^1.8.1",

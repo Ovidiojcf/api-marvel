@@ -26,6 +26,7 @@ export async function getCharacters (limit = 20, offset = 0) {
     throw error;
   }
 }
+
 export async function getComics() {
   try{
     const response = await api.get(`/comics?${getAuthParams()}`);
@@ -49,8 +50,6 @@ export async function getTopSeries() {
   try {
     const response = await api.get(`/series?limit=100&${getAuthParams()}`);
     const seriesIds = [21112, 20606,21114,21115];
-    // 21112
-    // Filtra apenas as séries desejadas
     const filteredSeries = response.data.data.results.filter(serie => seriesIds.includes(serie.id));
 
     return filteredSeries;
@@ -59,7 +58,6 @@ export async function getTopSeries() {
     throw error;
   }
 }
-
 
 export async function getCharactersById(characterId){
   try{
@@ -70,5 +68,18 @@ export async function getCharactersById(characterId){
     throw error;
   }
 }
+
+export async function getTotalCharacters() {
+  try {
+    const response = await api.get(`/characters?limit=1&offset=0&${getAuthParams()}`);
+
+    // Retorna o total de personagens disponíveis
+    return response.data.data.total;
+  } catch (error) {
+    console.log('Failed to fetch total characters');
+    throw error;
+  }
+}
+
 
 export default api;

@@ -1,18 +1,25 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getCharacters, getComics, getSeries, getTopSeries } from '@/services/marvelApi';
+import {
+  getCharacters,
+  getComics,
+  getSeries,
+  getTopSeries,
+  getTotalCharacters
+} from '@/services/marvelApi';
 import HeroCard from '@/components/HeroCard.vue';
-import ComicsCard from '@/components/ComicsCard.vue';
-import SeriesCard from '@/components/SeriesCard.vue';
+// import ComicsCard from '@/components/ComicsCard.vue';
+// import SeriesCard from '@/components/SeriesCard.vue';
 import Hero from '@/components/HeroComponent.vue';
-import NavBar from '@/components/NavBar.vue';
-import Footer from '@/components/FooterComponent.vue';
 import BestSeriesComponent from '@/components/BestSeriesComponent.vue';
+import MoonComponent from '@/components/MoonComponent.vue';
+import SpiderMan from '@/components/SpiderManComponent.vue';
 
 const heroes = ref([]);
 const comics = ref([]);
 const series = ref([]);
 const seriesTopSellers = ref([]);
+const totalCharacters = ref(0);
 
 onMounted(async () => {
   const data = await getCharacters(4, 0);
@@ -23,39 +30,36 @@ onMounted(async () => {
   series.value = seriesData.data.results;
   const seriesTop = await getTopSeries();
   seriesTopSellers.value = seriesTop;
-
+  totalCharacters.value = await getTotalCharacters();
 });
 </script>
 
 <template>
-  <NavBar />
   <div class="relative">
     <Hero />
   </div>
   <div>
     <BestSeriesComponent class="relative " :series="seriesTopSellers" />
   </div>
+  <div class="p-10">
+    <SpiderMan/>
+  </div>
   <div class="relative ">
     <div class="bg-black">
       <h3 class="py-4 mt-10 text-center text-5xl md:text-7xl font-bold tracking-tight text-white">
         Heros From Marvel
       </h3>
-      <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <HeroCard v-for="hero in heroes" :key="hero.id" :hero="hero" class="group relative" />
       </div>
     </div>
-    <p>----------------------------</p>
-    <div>
-      <h1>Lista de Comics</h1>
-      <ComicsCard v-for="comic in comics" :key="comic.id" :comic="comic" />
-    </div>
-    <p>----------------------------</p>
-    <div>
-      <h1>Lista de Séries</h1>
-      <SeriesCard v-for="serie in series" :key="serie.id" :serie="serie" />
+    <div class="p-10">
+      <MoonComponent />
     </div>
   </div>
-  <Footer />
+  <div class="text-center py-6">
+    <h2 class="text-4xl font-bold text-blue">Total de Heróis Disponíveis: {{ totalCharacters }}</h2>
+  </div>
 </template>
 
 <style scoped></style>
